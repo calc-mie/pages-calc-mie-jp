@@ -1,0 +1,118 @@
+---
+title: "もっとHaskellでAtCoderに参加したい"
+author: "flow_6852"
+---
+
+# はじめに
+
+以前記事にした[\(なるべく\)HaskellでAtCoderに参加したい](https://qiita.com/flow_6852/items/fce07a04e31d47edabda)の改良をしました.
+
+https://github.com/flow6852/atsubmit
+
+にソースがあり,使い方やサーバの詳しいAPIは載せようと考えています.
+ここでは前回からの改善とGADTsをどこで用いているかを記述します.
+
+# 前回からの改善
+
+1. 各APIをGADTsを用いた実装に変更しました.
+1. 筆者はvimmerで,いちいちブラウザで問題文を読むのも億劫なのでvimのtex_concealを使ってvimの中で完結できるようにvimscriptを書きました.
+1. 今までのコマンドを確認するlogコマンドを追加しました.
+1. 問題のhtmlファイルがクライアントコマンド実行時のカレントディレクトリに存在したときにそのhtmlから取得するようにして,相手サーバへのアクセスを減らしました.
+1. languageidを取得できるようにしました.
+
+# GADTsを用いた実装
+
+Generalized Algebric Data Typesの事で,一般代数的データ型といいます.
+[1][2]を参考に実装しています.
+
+```
+-- 自動提出の型.ユーザが可能なアクション.
+-- リクエストを受け取ってレスポンスを返す
+data SHelper a where
+        Login  :: Username -> Password -> SHelper () -- ユーザ名とパスワードを受け取ってログインする.ContestStateのcookieとscrf_tokenの更新.
+        QGet   :: V.Vector QName -> Userdir -> SHelper (V.Vector GetResult) -- 問題名を受け取って問題を入手する.ContestStateのQuestionsを更新.
+        CGet   :: V.Vector CName -> Userdir -> SHelper (V.Vector GetResult) -- コンテスト名を受け取ってそれに所属する問題のすべてを入手する.
+        Test   :: Socket -> Source -> QName -> SHelper ()-- ファイルと問題名を受け取って結果を出力する. 
+        Submit :: Source -> QName -> SHelper () -- ファイルと問題名を受け取って提出する.
+        Debug  :: Source -> DIn -> SHelper DebugBodyRes -- ファイルと入力を受け取って出力を返す.
+        Print  :: SHelper (V.Vector QName) -- ContestStateのQuestionsのすべてを返す.
+        Show   :: QName -> SHelper Question -- 問題を受け取ってその問題入出力を返す.
+        Result :: CName -> SHelper CResult -- コンテストを受け取ってコンテストの結果を出力する.
+        Log    :: SHelper (V.Vector RLog) -- ログの出力
+        LangId :: Lang -> SHelper (V.Vector LanguageId) -- data.LanguageIdの表示
+        Stop   :: SHelper ()
+        Logout :: SHelper ()
+```
+
+この`SHelper`型を使ってリクエスト用とレスポンス用のデータ型を作ってそれぞれに分けて実装しました.
+
+## サーバ側
+
+ソケット通信を管理する関数
+
+```
+runServer :: FilePath -> (Socket -> IO Bool) -> IO ()
+```
+
+リクエストを受け取って評価関数に渡してレスポンスをクライアントに送信する関数
+
+```
+server :: (Socket -> SHelperServerRequest -> SHelperServerResponse) -> Socket -> IO Bool
+
+```
+
+リクエストを評価を渡してレスポンスを作成する関数
+
+```
+actionSHelper :: MVar Contest -> Socket -> SHelperServerRequest -> SHelperServerResponse
+```
+
+実際にリクエストを評価する関数
+
+```
+evalSHelper :: MVar Contest -> SHelper a -> IO a
+```
+
+に分けられます.この関数の`SHelper a`型が得にGADTsでAPIを表現したことの利点が生きてきます.
+例えば以下のような実装があります.
+
+```
+evalSHelper mvcont (CGet cn (Userdir ud)) = do
+ contest <- readMVar mvcont
+ (res, quests) <- V.unzip <$> mapM (\x -> getContestInfo x ud contest) cn `catch` \(e :: SHelperException) -> throwIO e
+                                                                          `catch` \(e :: SomeException) -> throwIO e
+ swapMVar mvcont $ contest {questions = questions contest V.++ (V.filter (/=nullQuestion).V.concat.V.toList) quests}
+ return $ (V.concat.V.toList) res
+```
+
+コンテストの名前とクライアントアプリのワーキングディレクトリをサーバが受け取ってその結果(各問題について取得が成功したか,localから拾ってきたかなどの情報)を
+クライアントに返すように`SHelper a`型の定義をしたときにGADTsを用いて規定してそれを
+evalSHelperという関数をその型に従って実装するように制限できてます.
+なので実装時に足りなかった場合には`SHelper a`型とそのAPIに対応する部分だけを修正すればいいため,機能の修正や追加がとても簡単にできると感じました.
+
+### クライアント側
+
+サーバ側と同様で,`SHerlper a`型は`evalSHelper`関数の実装を制限しています.
+
+ソケット通信を開始する関数
+
+```
+sendServer :: FilePath -> (Socket -> IO a) -> IO a
+```
+
+リクエストをサーバに送ってレスポンスを受け取る関数
+```haskell
+evalSHelper :: SHelper a -> Socket -> IO a
+```
+
+に分けられます.
+
+# まとめ
+
+GADTsを用いると実装すべきAPIを型によって決定してそれに基づいて内部実装を考えるという流れができるので,問題を分割しやすくなってくれてうれしく感じました.
+
+# 参考文献
+
+[1] Generalised Algebraic Data Types (GADTs). [https://downloads.haskell.org/~ghc/6.6/docs/html/users_guide/gadt.html.]()
+
+[2] 逢坂 時響 本間 雅洋 類地 孝介 . Haskell 入門 関数型プログラミング言語の基礎と実践 . 技術評論社 , 2017.

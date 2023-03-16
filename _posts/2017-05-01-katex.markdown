@@ -1,0 +1,88 @@
+---
+title: "KaTeX の使い方"
+author: "@naca_nyan"
+---
+
+[KaTeX](https://khan.github.io/KaTeX/) を使ってWEBページに数式を表示させることができます。
+
+このサイトにもKaTeXが使ってあり、Markdown中に
+
+```
+円周率を$\pi$とする。半径$r$の球の体積$V$は
+$$V = \frac{4 \pi r^3}{3}$$
+```
+
+と書けば
+
+円周率を$\pi$とする。半径$r$の球の体積$V$は
+$$V = \frac{4 \pi r^3}{3}$$
+
+というふうに表示されます。
+
+`$hoge$` が文中式、 `$$hoge$$` が独立式として扱われます。
+ここで、 `$` と数式をスペースで離してしまうと、数式として認識されなくなるので注意してください。
+
+## 導入方法（Pandocの場合）
+PandocでMarkdownをHTMLに変換するのはとても簡単です。
+
+```
+pandoc -t html5 -s --katex source.md > target.html
+```
+
+これだけでCDNへのリンクが入ったHTMLファイルが生成できます。
+CDNからでなく自分でserveしたい場合や、挿入するCDNのKaTeXのバージョンを指定したい場合は、
+
+```
+--katex=<URL.js> --katex-stylesheet=<URL.css>
+```
+
+というオプションが使えます。
+
+## 導入方法（Hakyllの場合）
+Hakyllで生成しているサイト（このサイトがそうです）にKaTeXを使いたい場合、
+すこし状況は複雑です。
+
+まず、 `site.hs` に
+
+```
+import Text.Pandoc.Options
+```
+
+を追加し（必要に応じて.cabalファイルにbuild-dependsを追記します）、
+`pandocCompiler` という関数を、次のように書き換えます。
+
+```
+pandocCompilerWith def def {writerHTMLMathMethod = KaTeX "" ""}
+```
+
+１つめの `def` はReaderオプション、２つめはWriterオプションのデフォルト値です。
+ここではWriterオプションをrecord update syntaxを使ってKaTeXに変更しています。
+これでPandoc側の準備ができました。
+
+次に、 `templates` ディレクトリにあるテンプレートファイルに、次の
+コードを適切に挿入します。
+
+```
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
+<script>
+window.onload = function(){
+  var mathElements = document.getElementsByClassName("math");
+  for (var i=0; i < mathElements.length; i++){
+    var texText = mathElements[i].firstChild
+    katex.render(texText.data, mathElements[i])
+  }
+}
+</script>
+```
+
+最後のスクリプトでは、Pandocが数式部分に `math` クラスを指定してくれるので、
+その要素それぞれを、KaTeXでレンダリングさせています。
+
+これで導入は完了です。
+
+### おわりに
+KaTeXはMathJaxと違い、parseエラーが起きるとそこで例外を吐いて止まってしまうため、
+LaTeXの構文に従うよう注意が必要です。
+
+それでは、よい数式生活を！

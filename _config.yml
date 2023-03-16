@@ -1,0 +1,10 @@
+title: 計算研究会
+
+# Build settings
+theme: minima
+plugins:
+  - jekyll-feed
+
+domain: calc-mie.github.io
+url: https://calc-mie.github.io  
+baseurl: /pages-calc-mie-jp/

@@ -1,0 +1,127 @@
+---
+title: "JavaScriptの変数①"
+author: "bear_0821"
+---
+
+JavaScriptを基本中の基本から地道に勉強することにしたので、学んだことを記事にまとめることにしました。
+
+# JavaScriptの変数
+
+```javascript
+var name = value;
+```
+
+JavaScriptの変数定義はこのようにします。
+また、JavaScriptの変数には基本型とオブジェクト型が存在します。
+
+# 基本型
+
+JavaScriptにおける基本形にあたるのは
+
+ * 数値
+
+```javascript
+var num = 334;
+```
+
+ * 文字列
+
+```javascript
+var text = "オタク";
+```
+
+ * 論理型
+
+```javascript
+var judge = true;
+
+if(judge){
+  document.write("true");
+}
+else{
+  document.write("false");
+}
+```
+
+# オブジェクト型
+
+ざっくり説明すると、上記以外をオブジェクト型といいます。
+
+オブジェクトを生成し、そこにメンバ（値と名前を入れられる入れ物）とその値を登録します。
+
+```javascript
+var obj = new Object();
+
+obj.num = 810;
+obj.text = "バジリスクタイム"
+
+obj.func = function() {
+    alert("BE MY BABY");
+}
+```
+
+このように定義します。
+一見Ｃ言語の構造体のように思えますが、大きく異なる点があります。
+
+例として、ゴリラを作ってみましょう。まずはＣ言語の構造体を使ってゴリラを実装してみます。
+
+```c
+struct Gorilla {
+  int age;
+  int str;
+  int pow;
+};
+
+int main(void){
+  struct Gorilla gorilla;
+  gorilla.age = 3;
+  gorilla.str = 12;
+  gorilla.pow = 14;
+
+  return 0;
+}
+```
+
+このようにすると、「age」「str」「pow」の３つの要素を持ったゴリラができます。
+
+しかし、ここでゴリラに新しい要素「mp」を追加しようと思った場合、
+
+```c
+int main(void){
+  struct Gorilla gorilla;
+  gorilla.age = 3;
+  gorilla.str = 12;
+  gorilla.pow = 14;
+　gorilla.mp = 72;
+
+  return 0;
+}
+```
+
+このようなソースコードを書くとエラーが発生します。最初の構造体Gorillaに「mp」が存在しないからです。
+
+次に、JavaScriptのオブジェクトでゴリラを作ってみます。
+
+```javascript
+var gorilla = {"age": 3, "str" : 12, "pow" : 14};
+```
+
+これで先ほどと同じ要素を持つゴリラができます。また先ほどと同様に、「mp」という要素を追加します。すると、
+
+```javascript
+var gorilla = {"age": 3, "str" : 12, "pow" : 14};
+
+gorilla.mp = 72;
+```
+
+ソースコードはこのようになります。Ｃ言語と違いこれでもエラーが発生することはありません。
+
+つまり、Ｃ言語の構造体とJavaScriptのオブジェクトの違いは、途中で自由に要素を追加できるかどうかが大きな違いです。
+
+# 今後
+
+とりあえず今回はここまでにして、オブジェクト型の特徴などは次回以降の記事でまとめたいと思います。
+
+## 参考文献
+
+- [JavaScriptの変数と型、値](http://qiita.com/lrf141/items/ff1fa4741e4cd612b128)
