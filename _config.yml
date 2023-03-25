@@ -5,6 +5,4 @@ theme: minima
 plugins:
   - jekyll-feed
 
-domain: calc-mie.github.io
-url: https://calc-mie.github.io  
-baseurl: /pages-calc-mie-jp/
+url: https://www.calc.mie.jp
