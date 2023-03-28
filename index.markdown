@@ -19,6 +19,8 @@ layout: home
 
 [新入生向け記事]({% post_url 2020-02-29-calc-introduction %})
 
+主にDiscordを用いて活動しています。興味のある人は、まずは下のリンクからDiscordサーバーに参加してみてください。
+
 [Discord招待リンク](https://discord.gg/9ygRnybmcE)
 
 ※リンク切れの場合はtwitterで@hirahiraraにDMで連絡をお願いします。
