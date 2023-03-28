@@ -21,4 +21,4 @@ layout: home
 
 [Discord招待リンク](https://discord.gg/9ygRnybmcE)
 
-※リンク切れの場合はtwitterで@1985isnotfoundまたは@sakaiineにDMで連絡をお願いします。
+※リンク切れの場合はtwitterで@hirahiraraにDMで連絡をお願いします。
