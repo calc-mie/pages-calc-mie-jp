@@ -1,6 +1,7 @@
 FROM rockstorm/jekyll:pages-v228-minimal
 
 ENV PAGES_REPO_NWO calc-mie/pages-calc-mie-jp
+ENV TZ Asia/Tokyo
 
 RUN apk --no-cache add \
     g++ \
@@ -9,7 +10,10 @@ RUN apk --no-cache add \
     file \
     git \
     make \
-    vim
+    tzdata \
+    vim && \
+    cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime && \
+    rm -rf /var/cache/apk/*
 
 RUN git config --global core.filemode false && \
     git config --global core.autocrlf input && \
