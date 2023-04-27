@@ -1,0 +1,18 @@
+FROM rockstorm/jekyll:pages-v228-minimal
+
+ENV PAGES_REPO_NWO calc-mie/pages-calc-mie-jp
+
+RUN apk --no-cache add \
+    g++ \
+    ca-certificates \
+    curl \
+    file \
+    git \
+    make \
+    vim
+
+RUN git config --global core.filemode false && \
+    git config --global core.autocrlf input && \
+    git config --global --add safe.directory /workspace
+
+RUN gem update bundler
