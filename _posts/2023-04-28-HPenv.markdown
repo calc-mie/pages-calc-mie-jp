@@ -1,0 +1,28 @@
+---
+title: "計算研究会HPの環境について@2023"
+author: "85yago"
+---
+
+## 一言で
+
+[Jekyll](https://jekyllrb.com/)を用いてマークダウンで書かれた記事を変換しGitHub Pagesに置いています。
+
+## Jekyll
+
+Jekyllはシンプルな静的サイトを作成できるRuby製のソフトです。
+
+[Directory Structure][dir]で定義されているようなファイル構成をとっています。本HPの実際のファイルは[ここ][calc-page]にあります。
+
+マークダウンに加え、Liquidというテンプレートエンジンも利用可能です。また、HTMLとCSSも使用可能です。
+
+## GitHub Pages
+
+GitHubのホスティングサービスで、リポジトリの内容をそのまま公開したり、Actionsを使ってページを生成することもできます。
+
+Jekyllとの連携がかなり優秀で、簡単にこのHPのようなサイトを生成できます。いくつかのファイルを設定し、Pagesを使う設定をすることで、このHPは生成されています。
+
+詳しくは[Jekyllを使用してGitHub Pagesサイトを設定する][gh]を確認してください。
+
+[dir]: https://jekyllrb.com/docs/structure/
+[calc-page]: https://github.com/calc-mie/pages-calc-mie-jp
+[gh]: https://docs.github.com/ja/pages/setting-up-a-github-pages-site-with-jekyll

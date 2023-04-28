@@ -1,0 +1,13 @@
+version: "3"
+services:
+  service_jekyll:
+    build: 
+      context: .
+      dockerfile: dockerfile
+    container_name: local_jekyll
+    volumes:
+      - ..:/workspace:cached
+      - ..:/usr/src/app
+    command: jekyll serve -s /usr/src/app --watch --verbose --trace
+    ports:
+      - "4000:4000"
