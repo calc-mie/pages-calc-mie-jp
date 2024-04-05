@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "競技プログラミング用にPythonの環境を整える"
 author: "D4prog"
 ---

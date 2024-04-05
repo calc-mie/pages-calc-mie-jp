@@ -1,4 +1,5 @@
 ---
+layout: post
 title: sample baby.
 author: "Bear_0821"
 ---

@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "ブラウザで動作するものを作る"
 author: "naca_cyan13"
 ---

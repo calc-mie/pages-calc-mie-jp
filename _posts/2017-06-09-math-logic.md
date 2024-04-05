@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "math-logic"
 author: "teo"
 ---

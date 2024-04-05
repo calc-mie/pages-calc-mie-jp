@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "ランダウの記法"
 author: "@naca_nyan"
 ---

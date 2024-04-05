@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "Introduction to Python"
 author: "D4prog"
 ---

@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "gorilla-gorilla"
 author: "uhoho"
 ---

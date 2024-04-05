@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "多次元配列の変な話"
 author: "@SKsan_9642_univ"
 ---

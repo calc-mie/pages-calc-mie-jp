@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "phaser-memo"
 author: "naca_cyan13"
 ---

@@ -1,4 +1,5 @@
 ---
+layout: post
 title: 計算研サーバへのSSHの仕方
 author: "@naca_nyan"
 ---

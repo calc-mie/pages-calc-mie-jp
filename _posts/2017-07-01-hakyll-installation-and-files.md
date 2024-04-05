@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "Hakyllの使い方 インストールと各種ファイル説明"
 author: "mkdagjp"
 ---

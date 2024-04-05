@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "warp-tlsでSSL Testの評価をA+にする"
 author: "mkdagjp"
 ---

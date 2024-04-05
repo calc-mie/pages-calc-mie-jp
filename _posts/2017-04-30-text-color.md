@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "色の重要性と役割 -カラーコード編"
 author: "hasemathJK"
 ---

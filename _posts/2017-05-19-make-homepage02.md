@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "ホームページ作ってみた　その２"
 author: "Bear_0821"
 ---

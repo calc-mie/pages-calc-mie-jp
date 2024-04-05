@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "数理論理学 (1)"
 author: "teo"
 ---

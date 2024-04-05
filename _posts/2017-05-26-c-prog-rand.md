@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "C言語のrand関数について"
 author: "ozekims"
 ---

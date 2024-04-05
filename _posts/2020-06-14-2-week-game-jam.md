@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "2-week-game-jam"
 author: "SKsan"
 ---

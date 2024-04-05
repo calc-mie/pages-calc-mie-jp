@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "2018年8月8日式年遷宮期"
 author: "flow_6852"
 ---

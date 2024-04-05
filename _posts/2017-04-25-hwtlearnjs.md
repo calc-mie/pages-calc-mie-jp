@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "javascriptの勉強"
 author: "naca_cyan13"
 ---

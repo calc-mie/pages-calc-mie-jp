@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "唐突にでてきたJSONインジェクションについて"
 author: "_cyan13"
 ---

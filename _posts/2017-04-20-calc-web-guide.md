@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "calc-webの投稿ガイド"
 author: "naca_cyan13"
 ---

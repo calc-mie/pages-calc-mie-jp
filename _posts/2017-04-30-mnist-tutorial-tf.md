@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "Mnistチュートリアルをやってみた"
 author: "naca_cyan13"
 ---

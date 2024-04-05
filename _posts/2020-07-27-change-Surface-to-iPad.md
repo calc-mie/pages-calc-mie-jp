@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "Surface Pro 3にlinuxを導入した"
 author: "flow_6852"
 ---

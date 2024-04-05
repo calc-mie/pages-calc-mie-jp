@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "Pythonで競技プログラミングをするための入出力の方法"
 author: "D4prog"
 ---

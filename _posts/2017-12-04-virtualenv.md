@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "Virtualenv は便利だよ"
 author: "_cyan13"
 ---

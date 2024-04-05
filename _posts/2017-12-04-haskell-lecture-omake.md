@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "Haskell 講習会を開催しました(おまけ-クイックソート)"
 author: "_cyan13"
 ---

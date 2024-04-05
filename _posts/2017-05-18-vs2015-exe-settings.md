@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "Visual Studioでの実行ファイル設定"
 author: "feeling_grasper"
 ---

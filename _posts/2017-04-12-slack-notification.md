@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "SlackのPush通知ガイド"
 author: "@naca_nyan"
 ---

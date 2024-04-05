@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "TypeScriptについて"
 author: "naca_cyan13"
 ---

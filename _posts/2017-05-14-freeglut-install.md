@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "freeglutのちょっとだけ"
 author: "SKsan_9642_univ"
 ---

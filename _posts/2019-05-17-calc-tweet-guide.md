@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "calc-tweetの使い方"
 author: "flow_6852"
 ---

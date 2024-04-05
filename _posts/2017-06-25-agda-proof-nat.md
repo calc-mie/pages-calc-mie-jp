@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "Agda で証明を書く"
 author: "@naca_nyan"
 ---

@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "Growiを計算研究会のwikiとして利用を開始しました"
 author: "flow_6852"
 ---

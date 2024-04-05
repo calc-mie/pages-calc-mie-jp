@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "MeCabのセットアップとPythonでの形態素解析"
 author: "D4prog"
 ---

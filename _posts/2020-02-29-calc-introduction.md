@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "新入生の方へ ～計算研究会のご紹介～"
 author: "sakarush"
 ---

@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "UnityとProcessingを比較する"
 author: "Rinadehi_Mie"
 ---
