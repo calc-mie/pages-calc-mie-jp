@@ -1,17 +1,9 @@
-FROM rockstorm/jekyll:pages-v228-minimal
+FROM ruby:3.3-alpine3.19
 
-ENV PAGES_REPO_NWO calc-mie/pages-calc-mie-jp
 ENV TZ Asia/Tokyo
 
 RUN apk --no-cache add \
-    g++ \
-    ca-certificates \
-    curl \
-    file \
-    git \
-    make \
-    tzdata \
-    vim && \
+    build-base git tzdata vim curl && \
     cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime && \
     rm -rf /var/cache/apk/*
 
@@ -19,4 +11,9 @@ RUN git config --global core.filemode false && \
     git config --global core.autocrlf input && \
     git config --global --add safe.directory /workspace
 
-RUN gem update bundler
+RUN gem install bundler
+
+COPY Gemfile /tmp/
+COPY Gemfile.lock /tmp/
+WORKDIR /tmp
+RUN bundler install

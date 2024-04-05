@@ -4,4 +4,4 @@ title: About
 permalink: /about
 ---
 
-工事中
+何もないよ！

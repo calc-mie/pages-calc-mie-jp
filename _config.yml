@@ -1,12 +1,14 @@
 title: 計算研究会
+description: >- # this means to ignore newlines until "baseurl:"
+  計算研究会のホームページです。私たちは三重大学を主軸に活動する「計算」の研究会です。
+baseurl: ""
+url: "https://www.calc.mie.jp"
+
+twitter_username: calc_mie
+github_username: calc-mie
 
 # Build settings
+markdown: kramdown
 theme: minima
 plugins:
   - jekyll-feed
-
-#remote_theme: pages-themes/architect@v0.2.0
-#plugins:
-#- jekyll-remote-theme # add this line to the plugins list if you already have one
-
-url: https://www.calc.mie.jp
