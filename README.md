@@ -38,3 +38,4 @@ VSCodeとDockerを用いることで、ローカルでページを確認しな�
   A: `F1`から`Dev Containers: Rebuild Container`してください。多分反映されます。
      5分くらい待つと勝手に読み込み直してくれるみたいです。
      (watchオプション動いてないな……)
+     (README.mdとかで保存すると読み込んでくれるみたいです)
