@@ -7,6 +7,6 @@ services:
     volumes:
       - ..:/workspace:cached
       - ..:/usr/src/app
-    command: sh -c "jekyll serve -H 0.0.0.0 -s /usr/src/app --watch --verbose --trace"
+    command: sh -c "jekyll serve -H 0.0.0.0 -s /usr/src/app --watch --verbose --trace --future"
     ports:
       - "4000:4000"
