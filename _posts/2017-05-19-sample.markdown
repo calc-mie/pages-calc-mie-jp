@@ -1,7 +1,0 @@
----
-title: "sample"
-author: "massalia"
----
-
-Some good sentences here.
-

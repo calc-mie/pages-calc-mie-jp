@@ -1,9 +1,0 @@
----
-title: "ICPC2019に出場しました"
-author: "管理者"
----
-
-2019年7月12日に<a href=https://icpc.iisf.or.jp/>ICPC(国際大学対抗プログラミングコンテスト)</a>に出場しました。
-
-unlimited nya-nがアジア大会に出場します!<a href=http://www.info.mie-u.ac.jp/news/2019-1.html>三重大学の記事</a>
-

@@ -1,8 +1,0 @@
----
-title: "sample"
-author: "naca_cyan13"
----
-
-This is sample post!
-
-

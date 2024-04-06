@@ -1,8 +1,0 @@
----
-title: "sample-u"
-author: "teo"
----
-
-Some good sentences here.
-
-This is a sample.
