@@ -1,6 +1,6 @@
-FROM ruby:3.3-alpine3.19
+FROM ruby:3.4-alpine
 
-ENV TZ Asia/Tokyo
+ENV TZ="Asia/Tokyo"
 
 RUN apk --no-cache add \
     build-base git tzdata vim curl && \
