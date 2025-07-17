@@ -2,11 +2,12 @@ services:
   service_jekyll:
     build: 
       context: ..
-      dockerfile: .devcontainer\dockerfile
+      dockerfile: .devcontainer/dockerfile
     container_name: local_jekyll
     volumes:
       - ..:/workspace:cached
       - ..:/usr/src/app
     command: sh -c "jekyll serve -H 0.0.0.0 -s /usr/src/app --watch --verbose --trace --future"
+    # tty: true
     ports:
       - "4000:4000"
